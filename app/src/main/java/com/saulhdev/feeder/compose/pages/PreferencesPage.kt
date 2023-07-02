@@ -62,6 +62,7 @@ fun PreferencesPage() {
             prefs.syncOnlyOnWifi,
             prefs.openInBrowser,
             prefs.offlineReader,
+            prefs.showBookmarkButton,
         )
         val themePrefs = listOf(
             prefs.overlayTheme,

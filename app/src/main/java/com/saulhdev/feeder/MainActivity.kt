@@ -51,7 +51,8 @@ class MainActivity : DIAwareComponentActivity(),
         "pref_overlay_transparency",
         "pref_overlay_system_colors",
         "pref_overlay_background",
-        "pref_overlay_card_background"
+        "pref_overlay_card_background",
+        "show_bookmark_button"
     )
 
     private lateinit var navController: NavHostController

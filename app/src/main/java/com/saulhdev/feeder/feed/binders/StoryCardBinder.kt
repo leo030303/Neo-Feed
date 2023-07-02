@@ -53,8 +53,13 @@ object StoryCardBinder : FeedBinder {
                 crossfade(500)
             }
         }
+        if (prefs.showBookmarkButton.onGetValue()){
+            binding.saveButton.visibility = View.GONE
+        }
+        else {
+            binding.saveButton.updateBookmark(bookmarked)
+        }
 
-        binding.saveButton.updateBookmark(bookmarked)
         binding.saveButton.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
                 repository.bookmarkArticle(item.id, !bookmarked)

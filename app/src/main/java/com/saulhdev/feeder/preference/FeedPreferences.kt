@@ -118,6 +118,13 @@ class FeedPreferences(val context: Context) {
         route = "/${Routes.BOOKMARKS}/",
         onChange = doNothing
     )
+    var showBookmarkButton = BooleanPref(
+        key = "show_bookmark_button",
+        titleId = R.string.title_remove_bookmarks_button,
+        icon = Phosphor.Bookmarks,
+        defaultValue = false,
+        onChange = doNothing
+    )
 
     var openInBrowser = BooleanPref(
         key = "pref_open_browser",
