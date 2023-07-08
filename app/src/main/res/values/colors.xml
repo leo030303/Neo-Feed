@@ -4,6 +4,8 @@
     <color name="bookmarkedCard">#93A1FF</color>
     <color name="colorAccent">#FF00668B</color>
     <color name="backToTop">#D1087AA4</color>
+    <color name="colorPrimary">#FF00668B</color>
+    <color name="colorSecondary">#52B3ED</color>
 
     <color name="overlayBg">#A0FFFFFF</color>
     <color name="bg">#ffffff</color>
