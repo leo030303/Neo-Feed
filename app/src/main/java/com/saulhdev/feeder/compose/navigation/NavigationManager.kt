@@ -43,13 +43,17 @@ val LocalNavController = staticCompositionLocalOf<NavController> {
 }
 
 @Composable
-fun NavigationManager(navController: NavHostController) {
+fun NavigationManager(navController: NavHostController, startPar: String?="/") {
+    var start = "/"
+    if (startPar !=null){
+        start = startPar
+    }
     CompositionLocalProvider(
         LocalNavController provides navController
     ) {
         NavHost(
             navController = navController,
-            startDestination = "/",
+            startDestination = start,
             enterTransition = { fadeIn() + slideInHorizontally { it } },
             exitTransition = { fadeOut() + slideOutHorizontally { -it / 2 } },
             popEnterTransition = { fadeIn() + slideInHorizontally { -it } },
@@ -68,6 +72,7 @@ fun NavigationManager(navController: NavHostController) {
                 preferenceGraph(route = subRoute(Routes.ADD_FEED), { AddFeedPage() })
                 editFeedGraph(route = subRoute(Routes.EDIT_FEED))
             }
+            preferenceGraph(route = Routes.BOOKMARKS, { BookmarksPage() })
         }
     }
 }

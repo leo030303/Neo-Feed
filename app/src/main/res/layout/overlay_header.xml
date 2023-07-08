@@ -7,7 +7,7 @@
     android:paddingEnd="@dimen/rl_margin_less"
     android:paddingTop="4dp"
     android:paddingBottom="8dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal" >
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -19,6 +19,11 @@
         android:layout_weight="1"
         android:textStyle="bold"
         tools:targetApi="p" />
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_bookmarks"
+        android:id="@+id/main_page_bookmark_button" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:layout_width="24dp"

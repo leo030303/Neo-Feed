@@ -19,6 +19,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.saulhdev.feeder.MainActivity
 import com.saulhdev.feeder.NFApplication
 import com.saulhdev.feeder.R
+import com.saulhdev.feeder.compose.navigation.Routes
 import com.saulhdev.feeder.db.FeedRepository
 import com.saulhdev.feeder.feed.FeedAdapter
 import com.saulhdev.feeder.launcherapi.LauncherAPI
@@ -133,6 +134,13 @@ class OverlayView(val context: Context) :
     private fun initHeader() {
         rootView.findViewById<View>(R.id.header_preferences).setOnClickListener {
             callMenuPopup(it)
+        }
+        rootView.findViewById<View>(R.id.main_page_bookmark_button).setOnClickListener {
+            NFApplication.instance.startActivity(
+                Intent(NFApplication.instance, MainActivity::class.java).addFlags(
+                    Intent.FLAG_ACTIVITY_NEW_TASK
+                ).putExtra("startRoute", Routes.BOOKMARKS)
+            )
         }
     }
 

@@ -59,13 +59,36 @@ object StoryCardBinder : FeedBinder {
         else {
             binding.saveButton.updateBookmark(bookmarked)
         }
+        if(bookmarked){
+            binding.cardStory.setBackgroundColor(context.getColor(R.color.bookmarkedCard))
+        }else{
+            binding.cardStory.setBackgroundColor(context.getColor(R.color.card_bg))
+        }
 
         binding.saveButton.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
                 repository.bookmarkArticle(item.id, !bookmarked)
                 binding.saveButton.updateBookmark(!bookmarked)
                 bookmarked = !bookmarked
+                if(bookmarked){
+                    binding.cardStory.setBackgroundColor(context.getColor(R.color.bookmarkedCard))
+                }else{
+                    binding.cardStory.setBackgroundColor(context.getColor(R.color.card_bg))
+                }
             }
+        }
+        binding.root.setOnLongClickListener() {
+            CoroutineScope(Dispatchers.Main).launch {
+                repository.bookmarkArticle(item.id, !bookmarked)
+                binding.saveButton.updateBookmark(!bookmarked)
+                bookmarked = !bookmarked
+                if(bookmarked){
+                    binding.cardStory.setBackgroundColor(context.getColor(R.color.bookmarkedCard))
+                }else{
+                    binding.cardStory.setBackgroundColor(context.getColor(R.color.card_bg))
+                }
+            }
+            return@setOnLongClickListener true
         }
 
         binding.root.setOnClickListener {
@@ -95,7 +118,7 @@ object StoryCardBinder : FeedBinder {
         }
 
         theme ?: return
-        binding.cardStory.setBackgroundColor(theme.get(Theming.Colors.CARD_BG.ordinal))
+        //binding.cardStory.setBackgroundColor(theme.get(Theming.Colors.CARD_BG.ordinal))
         val themeCard = if (theme.get(Theming.Colors.CARD_BG.ordinal)
                 .isDark()
         ) Theming.defaultDarkThemeColors else Theming.defaultLightThemeColors
@@ -104,7 +127,6 @@ object StoryCardBinder : FeedBinder {
         binding.storyDate.setTextColor(themeCard.get(Theming.Colors.TEXT_COLOR_SECONDARY.ordinal))
         binding.storySummary.setTextColor(themeCard.get(Theming.Colors.TEXT_COLOR_SECONDARY.ordinal))
     }
-
     private fun MaterialButton.updateBookmark(bookmarked: Boolean) = if (bookmarked) {
         text = context.getString(R.string.bookmark_remove)
         setIconResource(R.drawable.ic_trash_simple)
@@ -114,4 +136,5 @@ object StoryCardBinder : FeedBinder {
         setIconResource(R.drawable.ic_archive_tray)
         setBackgroundColor(context.getColor(com.google.android.material.R.color.m3_sys_color_dynamic_primary_fixed))
     }
+
 }

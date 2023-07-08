@@ -73,8 +73,14 @@ class MainActivity : DIAwareComponentActivity(),
             androidContext(this@MainActivity)
             //modules(listOf(appModule))
         }
-
-
+        var startRoute:String? = "/"
+        val extras = getIntent().getExtras()
+        if(extras != null){
+            if(extras.containsKey("startRoute")){
+                startRoute = extras.getString("startRoute")
+            }
+        }
+        getIntent().getExtras()?.getString("startRoute")
         prefs = FeedPreferences(this)
         setContent {
             AppTheme(
@@ -86,7 +92,7 @@ class MainActivity : DIAwareComponentActivity(),
             ) {
                 withDI {
                     navController = rememberNavController()
-                    NavigationManager(navController = navController)
+                    NavigationManager(navController = navController, startPar = startRoute)
                 }
             }
         }
