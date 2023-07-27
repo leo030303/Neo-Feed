@@ -12,5 +12,6 @@ data class TextCardContent(
     val title: String,
     val subtitle: String? = null,
     val text: String,
+    val plainSnippet: String,
     val actions: List<CardAction>? = null
 ) : BaseContent()

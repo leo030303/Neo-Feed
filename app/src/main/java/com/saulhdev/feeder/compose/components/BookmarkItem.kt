@@ -24,18 +24,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.ListItem
-import androidx.compose.material3.ListItemDefaults
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -104,8 +100,9 @@ fun BookmarkItem(
         },
         trailingContent = {
             IconButton(
-                modifier = Modifier.size(36.dp),
-                onClick = { onRemoveAction(article) }
+                modifier = Modifier.size(54.dp),
+                onClick = { onRemoveAction(article) },
+                colors = IconButtonColors(Color.Gray, Color.LightGray, Color.Blue, Color.Cyan)
             ) {
                 Icon(
                     imageVector = Icons.Filled.Close,

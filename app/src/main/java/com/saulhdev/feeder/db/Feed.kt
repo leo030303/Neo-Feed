@@ -46,4 +46,5 @@ class Feed(
     var tag: String = "",
     var currentlySyncing: Boolean = false,
     var isEnabled: Boolean = true,
+    var isSocial: Boolean = false,
 )

@@ -30,7 +30,11 @@ object StoryCardBinder : FeedBinder {
         val prefs = FeedPreferences(context)
         val repository = FeedRepository(context)
         var bookmarked = item.bookmarked
-        binding.storyTitle.text = content.title
+        if (content.source.isSocial){
+            binding.storyTitle.text = content.plainSnippet
+        } else {
+            binding.storyTitle.text = content.title
+        }
         binding.storySource.text = content.source.title
         binding.storyDate.text =
             RelativeTimeHelper.getDateFormattedRelative(view.context, (item.time / 1000) - 1000)
@@ -58,8 +62,9 @@ object StoryCardBinder : FeedBinder {
             binding.saveButton.visibility = View.GONE
         }
         else {
-            binding.saveButton.updateBookmark(bookmarked)
+            binding.saveButton.visibility = View.VISIBLE
         }
+        binding.saveButton.updateBookmark(bookmarked)
         if(bookmarked){
             binding.cardStory.setBackgroundColor(context.getColor(R.color.bookmarkedCard))
         }else{

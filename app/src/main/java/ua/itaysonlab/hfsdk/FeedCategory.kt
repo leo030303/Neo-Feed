@@ -9,7 +9,8 @@ data class FeedCategory(
     val id: String,
     val title: String,
     @ColorInt val category_color: Int,
-    val server_icon: String?
+    val server_icon: String?,
+    val isSocial: Boolean
 ) : Parcelable {
     override fun describeContents(): Int {
         return 0

@@ -52,6 +52,9 @@ fun FeedItem(
     val (isEnabled, enable) = remember(feed.isEnabled) {
         mutableStateOf(feed.isEnabled)
     }
+    val (isSocial, social) = remember(feed.isSocial) {
+        mutableStateOf(feed.isSocial)
+    }
     val backgroundColor by animateColorAsState(
         targetValue = if (isEnabled) MaterialTheme.colorScheme.primaryContainer
         else MaterialTheme.colorScheme.surfaceContainer
@@ -71,7 +74,8 @@ fun FeedItem(
             )
         },
         headlineContent = {
-            Text(text = feed.title)
+            Text(text = if (isSocial) feed.title+"  _S_"
+            else feed.title)
         },
         supportingContent = feed.description.takeIf { it.isNotEmpty() }?.let {
             {

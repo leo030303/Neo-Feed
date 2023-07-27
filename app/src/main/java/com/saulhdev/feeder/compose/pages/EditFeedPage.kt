@@ -89,7 +89,8 @@ fun EditFeedPage(
                 feedTitle = editFeedViewModel::setTitle,
                 feedUrl = editFeedViewModel::setUrl,
                 feedFullTextByDefault = editFeedViewModel::setFullTextByDefault,
-                feedIsEnabled = editFeedViewModel::setIsEnabled
+                feedIsEnabled = editFeedViewModel::setIsEnabled,
+                feedIsSocial = editFeedViewModel::setIsSocial
             )
         }
     }
@@ -102,7 +103,8 @@ fun EditFeedView(
     feedTitle: (String) -> Unit,
     feedUrl: (String) -> Unit,
     feedFullTextByDefault: (Boolean) -> Unit,
-    feedIsEnabled: (Boolean) -> Unit
+    feedIsEnabled: (Boolean) -> Unit,
+    feedIsSocial: (Boolean) -> Unit
 ) {
     val (focusTitle, focusTag) = createRefs()
     val focusManager = LocalFocusManager.current
@@ -184,6 +186,14 @@ fun EditFeedView(
             index = 1,
             groupSize = 2
         )
+        Spacer(modifier = Modifier.height(4.dp))
+        ComposeSwitchView(
+            title = stringResource(id = R.string.social_view),
+            isChecked = viewState.isSocial,
+            onCheckedChange = feedIsSocial,
+            index = 2,
+            groupSize = 2
+        )
         Spacer(modifier = Modifier.height(16.dp))
 
         Row(
@@ -206,7 +216,8 @@ fun EditFeedView(
                         viewState.title,
                         sloppyLinkToStrictURL(viewState.url),
                         viewState.fullTextByDefault,
-                        viewState.isEnabled
+                        viewState.isEnabled,
+                        viewState.isSocial
                     )
                     navController.popBackStack()
                 }

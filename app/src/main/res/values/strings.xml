@@ -72,6 +72,7 @@
     <string name="remove_action_yes">Yes</string>
     <string name="news_image_text">news story image</string>
     <string name="title_feed_list">Feed List</string>
+    <string name="social_view">Social Media View</string>
     <string name="theme_auto_launcher">Automatically (from launcher)</string>
     <string name="theme_auto_system">Automatically (from system)</string>
     <string name="theme_light">Light</string>

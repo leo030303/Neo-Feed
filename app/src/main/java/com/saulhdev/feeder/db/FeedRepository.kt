@@ -44,7 +44,7 @@ class FeedRepository(context: Context) {
         }
     }
 
-    fun updateFeed(title: String, url: URL, fullTextByDefault: Boolean, isEnabled: Boolean) {
+    fun updateFeed(title: String, url: URL, fullTextByDefault: Boolean, isEnabled: Boolean, isSocial: Boolean) {
         scope.launch {
             val feed = feedDao.getFeedByURL(url)
             Log.d("FeedRepository", "updateFeed: ${feed?.url}")
@@ -53,6 +53,7 @@ class FeedRepository(context: Context) {
                 feed.url = url
                 feed.fullTextByDefault = fullTextByDefault
                 feed.isEnabled = isEnabled
+                feed.isSocial = isSocial
                 feedDao.update(feed)
             }
         }

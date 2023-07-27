@@ -61,6 +61,15 @@ class EditFeedViewModel(di: DI, private val state: SavedStateHandle) : DIAwareVi
         _isEnabled.update { value }
     }
 
+    private val _isSocial: MutableStateFlow<Boolean> = MutableStateFlow(
+        state["isSocial"] ?: false
+    )
+
+    fun setIsSocial(value: Boolean) {
+        state["isSocial"] = value
+        _isSocial.update { value }
+    }
+
     private val _viewState = MutableStateFlow(EditFeedViewState())
     val viewState: StateFlow<EditFeedViewState>
         get() = _viewState.asStateFlow()
@@ -84,18 +93,23 @@ class EditFeedViewModel(di: DI, private val state: SavedStateHandle) : DIAwareVi
             if (!state.contains("isEnabled")) {
                 setIsEnabled(feed.isEnabled)
             }
+            if (!state.contains("isSocial")) {
+                setIsSocial(feed.isSocial)
+            }
 
             combine(
                 _title,
                 _url,
                 _fullTextByDefault,
-                _isEnabled
+                _isEnabled,
+                _isSocial
             ) { params: Array<Any> ->
                 EditFeedViewState(
                     title = params[0] as String,
                     url = params[1] as String,
                     fullTextByDefault = params[2] as Boolean,
-                    isEnabled = params[3] as Boolean
+                    isEnabled = params[3] as Boolean,
+                    isSocial = params[4] as Boolean
                 )
             }.collect {
                 _viewState.value = it

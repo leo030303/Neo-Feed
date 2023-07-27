@@ -8,4 +8,5 @@ data class EditFeedViewState(
     val url: String = "",
     val fullTextByDefault: Boolean = true,
     val isEnabled: Boolean = true,
+    val isSocial: Boolean = false,
 )

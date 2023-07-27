@@ -52,11 +52,13 @@ class HFPluginService : Service(), CoroutineScope by MainScope() {
                                         text = article.description,
                                         background_url = article.imageUrl ?: "",
                                         link = article.link ?: "",
+                                        plainSnippet = article.plainSnippet,
                                         source = FeedCategory(
                                             feed.url.toString(),
                                             feed.title,
                                             Color.GREEN,
-                                            feed.feedImage.toString()
+                                            feed.feedImage.toString(),
+                                            feed.isSocial
                                         )
                                     ),
                                     bookmarked = article.bookmarked,
@@ -82,7 +84,7 @@ class HFPluginService : Service(), CoroutineScope by MainScope() {
             val feedList: List<Feed> = repository.getAllFeeds()
 
             callback.onCategoriesReceive(feedList.map {
-                FeedCategory(it.url.toString(), it.title, Color.GREEN, it.feedImage.toString())
+                FeedCategory(it.url.toString(), it.title, Color.GREEN, it.feedImage.toString(), it.isSocial)
             })
         }
     }
