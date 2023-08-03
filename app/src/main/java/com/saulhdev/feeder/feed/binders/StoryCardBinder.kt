@@ -31,6 +31,7 @@ object StoryCardBinder : FeedBinder {
         val repository = FeedRepository(context)
         var bookmarked = item.bookmarked
         if (content.source.isSocial){
+            binding.cardStory.setBackgroundColor(context.getColor(R.color.socialCard))
             binding.storyTitle.text = content.plainSnippet
         } else {
             binding.storyTitle.text = content.title
@@ -66,9 +67,9 @@ object StoryCardBinder : FeedBinder {
         }
         binding.saveButton.updateBookmark(bookmarked)
         if(bookmarked){
-            binding.cardStory.setBackgroundColor(context.getColor(R.color.bookmarkedCard))
+            binding.cardStory.setBackgroundColor(context.getColor(R.color.colorCardM3Bookmarked))
         }else{
-            binding.cardStory.setBackgroundColor(context.getColor(R.color.card_bg))
+            binding.cardStory.setBackgroundColor(context.getColor(R.color.colorCardM3Primary))
         }
 
         binding.saveButton.setOnClickListener {
@@ -77,9 +78,9 @@ object StoryCardBinder : FeedBinder {
                 binding.saveButton.updateBookmark(!bookmarked)
                 bookmarked = !bookmarked
                 if(bookmarked){
-                    binding.cardStory.setBackgroundColor(context.getColor(R.color.bookmarkedCard))
+                    binding.cardStory.setBackgroundColor(context.getColor(R.color.colorCardM3Bookmarked))
                 }else{
-                    binding.cardStory.setBackgroundColor(context.getColor(R.color.card_bg))
+                    binding.cardStory.setBackgroundColor(context.getColor(R.color.colorCardM3Primary))
                 }
             }
         }
@@ -89,9 +90,9 @@ object StoryCardBinder : FeedBinder {
                 binding.saveButton.updateBookmark(!bookmarked)
                 bookmarked = !bookmarked
                 if(bookmarked){
-                    binding.cardStory.setBackgroundColor(context.getColor(R.color.bookmarkedCard))
+                    binding.cardStory.setBackgroundColor(context.getColor(R.color.colorCardM3Bookmarked))
                 }else{
-                    binding.cardStory.setBackgroundColor(context.getColor(R.color.card_bg))
+                    binding.cardStory.setBackgroundColor(context.getColor(R.color.colorCardM3Primary))
                 }
             }
             return@setOnLongClickListener true
@@ -128,10 +129,10 @@ object StoryCardBinder : FeedBinder {
         val themeCard = if (theme.get(Theming.Colors.CARD_BG.ordinal)
                 .isDark()
         ) Theming.defaultDarkThemeColors else Theming.defaultLightThemeColors
-        binding.storyTitle.setTextColor(themeCard.get(Theming.Colors.TEXT_COLOR_PRIMARY.ordinal))
-        binding.storySource.setTextColor(themeCard.get(Theming.Colors.TEXT_COLOR_SECONDARY.ordinal))
-        binding.storyDate.setTextColor(themeCard.get(Theming.Colors.TEXT_COLOR_SECONDARY.ordinal))
-        binding.storySummary.setTextColor(themeCard.get(Theming.Colors.TEXT_COLOR_SECONDARY.ordinal))
+        binding.storyTitle.setTextColor(context.getColor(R.color.colorCardM3TextPrimary))
+        binding.storySource.setTextColor(context.getColor(R.color.colorCardM3TextSecondary))
+        binding.storyDate.setTextColor(context.getColor(R.color.colorCardM3TextSecondary))
+        binding.storySummary.setTextColor(context.getColor(R.color.colorCardM3TextSecondary))
     }
     private fun MaterialButton.updateBookmark(bookmarked: Boolean) = if (bookmarked) {
         text = context.getString(R.string.bookmark_remove)

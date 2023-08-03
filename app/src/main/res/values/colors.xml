@@ -2,10 +2,15 @@
 <resources>
     <color name="globalAccent">#4285f4</color>
     <color name="bookmarkedCard">#93A1FF</color>
+    <color name="socialCard">#FFDCA8</color>
     <color name="colorAccent">#FF00668B</color>
     <color name="backToTop">#D1087AA4</color>
     <color name="colorPrimary">#FF00668B</color>
     <color name="colorSecondary">#52B3ED</color>
+    <color name="colorCardM3Primary">@android:color/system_accent1_100</color>
+    <color name="colorCardM3Bookmarked">@android:color/system_accent1_200</color>
+    <color name="colorCardM3TextPrimary">@android:color/system_accent1_700</color>
+    <color name="colorCardM3TextSecondary">@android:color/system_accent1_800</color>
 
     <color name="overlayBg">#A0FFFFFF</color>
     <color name="bg">#ffffff</color>

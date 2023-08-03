@@ -83,7 +83,7 @@ data class FeedArticle(
         val summary: String = (
                 entry.summary ?: entry.content_text
                 ?: converter.convert(text)
-                ).take(200)
+                ).take(1000)
 
         // Make double sure no base64 images are used as thumbnails
         val safeImage = when {
